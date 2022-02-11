@@ -8,11 +8,11 @@ const sinon = require('sinon')
 describe('test directory ', () => {
     it('reads a directory', () => {
         sinon.stub(fs, 'readdir').callsFake((path, cb) =>{
-         cb(null, ['file1.txt'], path)
+         cb(null, ['file1.txt'])
         })
       
         return files.readdir('./').then( list => {
-          console.log(list)
+          expect(list.length).to.equal(1)
       })
     })
 } )
